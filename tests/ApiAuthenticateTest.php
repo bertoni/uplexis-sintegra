@@ -9,7 +9,7 @@ class ApiAuthenticateTest extends TestCase {
 	 */
 	public function testConsumApiWithoutInformUserHeader()
 	{
-		$response = $this->call('GET', '/api/consult/123');
+		$response = $this->call('GET', '/api/consult/es/123');
 
 		$this->assertEquals(401, $response->getStatusCode());
         $content = (array)json_decode($response->getContent());
@@ -24,7 +24,7 @@ class ApiAuthenticateTest extends TestCase {
      */
     public function testConsumApiWithoutInformKeyHeader()
     {
-        $response = $this->call('GET', '/api/consult/123', [], [], [], ['HTTP_user' => 'blabla']);
+        $response = $this->call('GET', '/api/consult/es/123', [], [], [], ['HTTP_user' => 'blabla']);
 
         $this->assertEquals(401, $response->getStatusCode());
         $content = (array)json_decode($response->getContent());
@@ -39,7 +39,7 @@ class ApiAuthenticateTest extends TestCase {
      */
     public function testConsumApiInformingInvalidUser()
     {
-        $response = $this->call('GET', '/api/consult/123', [], [], [], ['HTTP_user' => 'blabla', 'HTTP_key' => 'blabla']);
+        $response = $this->call('GET', '/api/consult/es/123', [], [], [], ['HTTP_user' => 'blabla', 'HTTP_key' => 'blabla']);
 
         $this->assertEquals(401, $response->getStatusCode());
         $content = (array)json_decode($response->getContent());
@@ -54,7 +54,7 @@ class ApiAuthenticateTest extends TestCase {
      */
     public function testConsumApiInformingInvalidKey()
     {
-        $response = $this->call('GET', '/api/consult/123', [], [], [], ['HTTP_user' => 'arnaldo', 'HTTP_key' => 'blabla']);
+        $response = $this->call('GET', '/api/consult/es/123', [], [], [], ['HTTP_user' => 'arnaldo', 'HTTP_key' => 'blabla']);
 
         $this->assertEquals(401, $response->getStatusCode());
         $content = (array)json_decode($response->getContent());
@@ -69,7 +69,7 @@ class ApiAuthenticateTest extends TestCase {
      */
     public function testConsumApiInformingValidData()
     {
-        $response = $this->call('GET', '/api/consult/123', [], [], [], ['HTTP_user' => 'arnaldo', 'HTTP_key' => 'uplexis123']);
+        $response = $this->call('GET', '/api/consult/es/123', [], [], [], ['HTTP_user' => 'arnaldo', 'HTTP_key' => 'uplexis123']);
 
         $this->assertNotEquals(401, $response->getStatusCode());
     }

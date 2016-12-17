@@ -35,6 +35,8 @@ class RestAuth {
 	        ], 401);
 		}
 
+		$request->attributes->add(['idusuario' => $usuarios[0]->id]);
+
 		return $next($request);
 	}
 
