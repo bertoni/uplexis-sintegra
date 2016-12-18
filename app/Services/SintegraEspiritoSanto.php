@@ -50,7 +50,7 @@ class SintegraEspiritoSanto extends Sintegra
         $json = array();
 
         $source_encoded = mb_convert_encoding($source, 'UTF-8', 'ISO-8859-1');
-        preg_match('/Cadastro\ atualizado\ até:\ (?P<date>.*)/', $source_encoded, $matches);
+        preg_match('/Cadastro\ atualizado\ até:\ (?P<date>.*)\</', $source_encoded, $matches);
         if (isset($matches['date'])) {
             $json['atualizacao_cadastro'] = trim($matches['date']);
         }

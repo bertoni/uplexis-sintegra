@@ -20,8 +20,11 @@ class SintegraEsController extends Controller {
 
     /**
 	 * Consulting a CNPJ into Sintegra
+     *
+     * @param string  $cnpj
+     * @param Request $request
 	 *
-	 * @return Response
+	 * @return jsonResponse
 	 */
 	public function getCnpjData($cnpj, Request $request)
 	{
